@@ -1,0 +1,88 @@
+:root {
+  --bg: #F7F5F1; --surface: #FFFFFF; --ink: #211F1B; --ink-soft: #6B665C; --line: #E4DFD3;
+  --primary: #1B2A4A; --primary-soft: #324565; --accent: #C68A2E; --accent-soft: #F3E4C6;
+  --success: #2F6F4E; --success-soft: #DFEEE5; --danger: #AE3B2E; --danger-soft: #F6E2DE;
+  --serif: 'Iowan Old Style','Palatino Linotype',Georgia,serif;
+  --sans: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+}
+
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink); font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; }
+button { font-family: var(--sans); }
+input, textarea, select { font-family: var(--sans); }
+
+.container { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
+
+.card {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+}
+
+.btn {
+  font-family: var(--sans); font-weight: 600; font-size: 14px; padding: 10px 18px;
+  border-radius: 10px; border: 1px solid transparent; cursor: pointer; display: inline-flex;
+  align-items: center; justify-content: center; gap: 8px; white-space: nowrap;
+}
+.btn-primary { background: var(--primary); color: #fff; }
+.btn-accent { background: var(--accent); color: #fff; }
+.btn-outline { background: transparent; color: var(--ink); border-color: var(--line); }
+.btn-danger { background: transparent; color: var(--danger); border-color: var(--danger-soft); }
+.btn-sm { padding: 6px 12px; font-size: 13px; }
+.btn-full { width: 100%; }
+.btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.badge { display: inline-flex; align-items: center; padding: 3px 10px; border-radius: 999px; font-size: 12px; font-weight: 600; }
+.badge-neutral { background: var(--line); color: var(--ink-soft); }
+.badge-success { background: var(--success-soft); color: var(--success); }
+.badge-danger { background: var(--danger-soft); color: var(--danger); }
+.badge-accent { background: var(--accent-soft); color: #8A5F1E; }
+
+.field { margin-bottom: 14px; }
+.field label { display: block; font-size: 12.5px; font-weight: 600; color: var(--ink-soft); margin-bottom: 5px; }
+.input, textarea.input, select.input {
+  width: 100%; padding: 9px 12px; border-radius: 9px; border: 1px solid var(--line);
+  font-size: 14px; background: #fff; color: var(--ink);
+}
+.input:focus, textarea.input:focus, select.input:focus { outline: 2px solid var(--primary-soft); outline-offset: 1px; }
+
+.grid-products { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+@media (min-width: 640px) { .grid-products { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 960px) { .grid-products { grid-template-columns: repeat(4, 1fr); } }
+
+/* -------- layout: sidebar en escritorio, barra inferior en celular -------- */
+.app-shell { display: flex; min-height: 100vh; }
+.sidebar-nav { display: none; }
+.bottom-nav {
+  position: fixed; left: 0; right: 0; bottom: 0; background: var(--surface);
+  border-top: 1px solid var(--line); display: flex; z-index: 20;
+}
+.bottom-nav button {
+  flex: 1; background: none; border: none; padding: 8px 4px 10px; font-size: 11px;
+  color: var(--ink-soft); display: flex; flex-direction: column; align-items: center; gap: 3px; cursor: pointer;
+}
+.bottom-nav button.active { color: var(--primary); font-weight: 700; }
+.main-content { flex: 1; min-width: 0; padding-bottom: 70px; }
+
+@media (min-width: 768px) {
+  .sidebar-nav {
+    display: flex; flex-direction: column; width: 220px; flex-shrink: 0;
+    background: var(--primary); color: #fff; padding: 20px 14px; min-height: 100vh;
+  }
+  .bottom-nav { display: none; }
+  .main-content { padding-bottom: 0; }
+}
+.sidebar-nav button {
+  background: none; border: none; color: rgba(255,255,255,0.75); text-align: left;
+  padding: 10px 12px; border-radius: 9px; font-size: 14px; cursor: pointer; display: flex; gap: 10px; align-items: center;
+}
+.sidebar-nav button.active { background: rgba(255,255,255,0.12); color: #fff; font-weight: 700; }
+
+.topbar {
+  background: var(--primary); color: #fff; padding: 8px 16px; display: flex; align-items: center;
+  justify-content: center; gap: 10px; font-size: 12.5px; flex-wrap: wrap; text-align: center;
+}
+.topbar button.link { background: none; border: none; color: #fff; opacity: 0.85; cursor: pointer; font-size: 12.5px; text-decoration: underline; }
